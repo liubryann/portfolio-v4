@@ -1,0 +1,48 @@
+.heroStyle {
+  font-family: PT Sans;
+  font-size: 120px;
+  font-weight: 100;
+  opacity: 63%;
+}
+
+.parentWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20vh;
+}
+
+.heroWrapper {
+  display: flex;
+}
+
+.portraitWrapper {
+  position: relative;
+}
+
+.firstName {
+  margin:0;
+  margin-right: 40px;
+  line-height: 95px;
+}
+
+.lastName {
+  z-index: 1;
+  position: absolute;
+  top:0;
+  left:0;
+  margin: 0;
+  margin-left: -10px;
+  line-height: 95px;
+}
+
+.secondSubtitle {
+  margin-left: 100px;
+}
+
+.portrait {
+  z-index: 0;
+  position: absolute;
+  top:0;
+  left:0;
+  opacity: 69%;
+}

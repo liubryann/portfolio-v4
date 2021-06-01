@@ -1,0 +1,17 @@
+$nav-font: Helvetica; 
+
+.navStyle {
+  font-family: $nav-font;
+  color: black; 
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.subtitleStyle {
+  font-family: PT Sans;
+  font-size: 24px;
+  opacity: 64%;
+  font-style: italic;
+  font-weight: 100;
+  margin: 12px 0;
+}
