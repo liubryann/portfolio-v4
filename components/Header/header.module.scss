@@ -17,3 +17,9 @@
     text-decoration: underline;
   }
 }
+
+.hideMobile {
+  @media (max-width: 748px) {
+    display: none;
+  }
+}

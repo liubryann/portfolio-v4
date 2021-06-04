@@ -22,7 +22,8 @@
 .firstName {
   margin:0;
   margin-right: 40px;
-  line-height: 95px;
+  line-height: 82px;
+  margin-bottom: 25px;
 }
 
 .lastName {
@@ -32,7 +33,7 @@
   left:0;
   margin: 0;
   margin-left: -10px;
-  line-height: 95px;
+  line-height: 82px;
 }
 
 .secondSubtitle {
@@ -45,4 +46,35 @@
   top:0;
   left:0;
   opacity: 69%;
+}
+
+.delay {
+  --animate-delay: 0.5s;
+}
+
+.hideMobile {
+  @media (max-width: 748px) {
+    display: none;
+  }
+}
+
+.hideDesktop {
+  @media not all and (max-width: 748px) {
+    display: none;
+  }
+}
+
+@media (max-width: 748px) {
+  .heroStyle {
+    font-size: 60px;
+  }
+
+  .firstName {
+    line-height: 55px;
+    margin: 0;
+  }
+
+  .secondSubtitle {
+    margin-left: 70px;
+  }
 }

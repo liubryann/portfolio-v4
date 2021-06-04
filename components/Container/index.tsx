@@ -13,6 +13,7 @@ export default function Container({ children }) {
         />
         <meta name="og:title" content={siteTitle} />
         <title>{siteTitle}</title>
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Sans" />
       </Head>
       <main>{children}</main>
     </div>

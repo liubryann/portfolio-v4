@@ -8,7 +8,7 @@ export default function Header() {
       <div>
         icon
       </div>
-      <ul className={`${styles.navWrapper} ${globalStyles.navStyle}`}>
+      <ul className={`${styles.navWrapper} ${globalStyles.navStyle} ${styles.hideMobile}`}>
         <li>
           <Link href="/projects">
             <a>projects</a>
