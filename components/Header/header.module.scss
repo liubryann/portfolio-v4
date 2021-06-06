@@ -18,8 +18,8 @@
   }
 }
 
-.hideMobile {
-  @media (max-width: 748px) {
-    display: none;
-  }
+.hamburgerWrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }

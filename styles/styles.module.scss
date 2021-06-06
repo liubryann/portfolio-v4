@@ -21,3 +21,19 @@ $nav-font: Helvetica;
     font-size: 16px;
   }
 }
+
+.hideMobile {
+  @media (max-width: 748px) {
+    display: none;
+  }
+}
+
+.hideDesktop {
+  @media not all and (max-width: 748px) {
+    display: none;
+  }
+}
+
+.delay {
+  --animate-delay: 0.5s;
+}

@@ -1,0 +1,32 @@
+.menuWrapper {
+  height: calc(100vh - 60px);
+  width: 100%;
+  position: fixed;
+  top: 60px;
+  left:0;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  z-index: inherit;
+}
+
+.menuItemsOuterWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.menuItemsWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  list-style: none;
+  height: 200px;
+  padding: 0;
+  margin-bottom: 250px;
+  
+  li:hover {
+    text-decoration: underline;
+  }
+}

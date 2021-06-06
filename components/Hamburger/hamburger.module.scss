@@ -1,0 +1,24 @@
+.hamburgerWrapper {
+  height: 30px;
+  width: 30px;
+  div {
+    width: 25px;
+    height: 1px;
+    background-color: black;
+    transition: all 0.3s linear;
+    transform-origin: 50% 50%;
+  }
+  :first-child {
+    margin-bottom: 8px;
+    margin-top: 15px;
+  }
+}
+
+.open {
+  :first-child {
+    transform: rotate(-45deg) translateY(6px)
+  }
+  :nth-child(2) {
+    transform: rotate(45deg) translateY(-6px)
+  }
+}

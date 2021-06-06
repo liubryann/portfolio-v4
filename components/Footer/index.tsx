@@ -14,7 +14,7 @@ export default function Footer({ downArrow, label }: FooterProps) {
       <Link href='/projects' >
         <a className={styles.footerMiddle}>
           <div className={styles.footerLabelStyle}>{ label ? (label) : (<BsChevronCompactDown/>)}</div>
-          <BsChevronCompactDown />
+          <BsChevronCompactDown className={styles.footerMiddleIcon} />
         </a>
       </Link>
     </footer>

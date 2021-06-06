@@ -1,9 +1,15 @@
+import { useState } from 'react';
 import styles from './container.module.scss';
 import Head from 'next/head';
+import Header from '../Header';
+import Menu from '../Menu';
+import { AnimatePresence, motion } from 'framer-motion' 
 
 const siteTitle = 'Bryan Liu';
 
 export default function Container({ children }) {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -15,7 +21,20 @@ export default function Container({ children }) {
         <title>{siteTitle}</title>
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Sans" />
       </Head>
-      <main>{children}</main>
+      <Header open={open} setOpen={setOpen} />
+      <AnimatePresence>
+        <main key="main">{children}</main> 
+        { open && (
+          <motion.div
+            initial={{ opacity: 0, zIndex:0 }}
+            animate={{ opacity: 1, zIndex: 1, }}
+            exit={{ opacity: 0, zIndex: 0,  }}
+            transition={{ ease: 'easeOut', duration: 0.3 }} 
+          >
+            <Menu key="menu"/>   
+          </motion.div>
+         )}
+      </AnimatePresence>
     </div>
   )
 }
