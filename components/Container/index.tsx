@@ -23,7 +23,7 @@ export default function Container({ children }) {
       </Head>
       <Header open={open} setOpen={setOpen} />
       <AnimatePresence>
-        <main key="main">{children}</main> 
+        <main className={styles.main} key="main">{children}</main> 
         { open && (
           <motion.div
             initial={{ opacity: 0, zIndex:0 }}

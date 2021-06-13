@@ -6,11 +6,9 @@ import Footer from '../components/Footer';
 
 export default function Home() {
   return (
-    <div>
       <Container>
         <Hero />
-        <Footer label="view more" />
+        <Footer middleLabel="view more" middleLink="projects" />
       </Container>
-    </div>
   )
 }

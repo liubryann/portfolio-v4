@@ -9,12 +9,14 @@ export default function Hero() {
     <div className={styles.parentWrapper}>
       <div className={styles.heroWrapper}>
         <div>
+          <div className="animate__animated animate__fadeIn">
           <h1 className={`${styles.heroStyle} ${styles.firstName}`}>
             BRYAN
             <span className={globalStyles.hideDesktop}>
               {' LIU'}
             </span>
           </h1>
+          </div>
           <div className="animate__animated animate__fadeInLeft">
             <h3 className={`${globalStyles.subtitleStyle} `}>4th year SWE @uoft</h3>
           </div>
@@ -22,7 +24,7 @@ export default function Hero() {
             <h3 className={`${globalStyles.subtitleStyle} ${styles.secondSubtitle}`}>and front-end specialist</h3>
           </div>
         </div>
-        <div className={`${globalStyles.hideMobile} ${styles.portraitWrapper}`} >
+        <div className={`${globalStyles.hideMobile} ${styles.portraitWrapper} animate__animated animate__fadeIn `} >
           <h1 className={`${styles.heroStyle} ${styles.lastName}`}>LIU</h1>
             <Image
               priority

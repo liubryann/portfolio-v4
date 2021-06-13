@@ -1,11 +1,8 @@
 .footerWrapper {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width:100%;
+  width:80vw;
   height: 70px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .footerLabelStyle {
@@ -30,4 +27,8 @@
 
 .footerMiddle:hover {
   top: -10px;
+}
+
+.empty {
+  width: 70px; 
 }

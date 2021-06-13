@@ -16,9 +16,20 @@ $nav-font: Helvetica;
   margin: 12px 0;
 }
 
+.headerStyle {
+  font-family: PT Sans;
+  font-size: 60px;
+  opacity: 63%;
+  font-weight: 100;
+}
+
 @media (max-width: 748px) {
   .subtitleStyle {
     font-size: 16px;
+  }
+
+  .headerStyle {
+    font-size: 36px;
   }
 }
 

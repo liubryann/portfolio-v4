@@ -16,7 +16,7 @@ export default function Header({ open, setOpen }) {
     <div>
     <header className={styles.headerWrapper}>
       <div>
-        icon
+        <Link href="/"><a className={globalStyles.navStyle}>icon</a></Link>
       </div>
       <ul className={`${styles.navWrapper} ${globalStyles.navStyle} ${globalStyles.hideMobile}`}>
         { links.map((link, index) => {
