@@ -4,16 +4,17 @@ import globalStyles from '../../styles/styles.module.scss';
 import styles from './pageheader.module.scss';
 
 interface PageHeaderProps {
+  pageTitle: string,
   title: string, 
   subtitleOne?: string, 
   subtitleTwo?: string,
 }
 
-export default function PageHeader({ title, subtitleOne, subtitleTwo }: PageHeaderProps) {
+export default function PageHeader({ pageTitle, title, subtitleOne, subtitleTwo }: PageHeaderProps) {
   return (
     <div className={styles.pageHeaderWrapper}>
       <Head>
-        <title>Featured Projects</title>
+        <title>{ pageTitle }</title>
       </Head>
       <div className="animate__animated animate__fadeIn ">
         <h1 className={`${globalStyles.headerStyle} ${styles.title}`}>

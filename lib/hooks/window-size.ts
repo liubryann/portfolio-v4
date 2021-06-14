@@ -6,13 +6,12 @@ export default function useWindowSize() {
 
   useEffect(() => {
     function handleResize() {
-      return throttle(() => {
-        window.innerWidth <= 748 ? setIsMobile(true) : setIsMobile(false);
-      }, 200); 
+      window.innerWidth <= 748 ? setIsMobile(true) : setIsMobile(false);
     }
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    const throttleHandleResize = throttle(handleResize, 200);
+    setIsMobile(window.innerWidth <= 748)
+    window.addEventListener('resize', throttleHandleResize);
+    return () => window.removeEventListener('resize', throttleHandleResize);
   }, [])
 
   return isMobile;

@@ -1,0 +1,22 @@
+.imageWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.mobileImageWrapper {
+  display: flex;
+  flex-direction: column;
+
+  // :first-child {
+  //   margin-top: 60px;
+  // }
+
+  // div {
+  //   margin-bottom: 60px;
+  // }
+}
+
+.verticalSpace {
+  height: 60px;
+  width: 100%;
+}
