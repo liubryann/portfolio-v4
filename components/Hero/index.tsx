@@ -27,7 +27,6 @@ export default function Hero() {
         <div className={`${globalStyles.hideMobile} ${styles.portraitWrapper} animate__animated animate__fadeIn `} >
           <h1 className={`${styles.heroStyle} ${styles.lastName}`}>LIU</h1>
             <Image
-              priority
               src="/images/portrait.jpg"
               className={`${styles.portrait} ${globalStyles.hideMobile}`}
               height={400}

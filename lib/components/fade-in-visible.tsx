@@ -2,7 +2,12 @@ import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { motion, useAnimation } from "framer-motion";
 
-export default function FadeInWhenVisible({ children }) {
+interface FadeInWhenVisibleProps {
+  hover?: Boolean, 
+  children: any,
+}
+
+export default function FadeInWhenVisible({ hover, children }: FadeInWhenVisibleProps) {
   const controls = useAnimation();
   const [ref, inView] = useInView();
 
@@ -22,6 +27,8 @@ export default function FadeInWhenVisible({ children }) {
         visible: { opacity: 1 },
         hidden: { opacity: 0 }
       }}
+      whileHover={ hover ? { scale: 1.1, transition: { duration: 0.2 } } : undefined }
+      whileTap={ hover ? { scale: 1.1, transition: { duration: 0.2 } } : undefined }
     >
       {children}
     </motion.div>

@@ -1,0 +1,75 @@
+.techPageWrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  row-gap: 30px;
+  margin-left: 50px;
+}
+
+.techWrapper {
+  display: flex;
+  margin-top: 15px;
+
+  .techItem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .imageWrapper {
+      width: 65px;
+      height: 65px;
+      position: relative;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.techItemWrapper {
+  position: relative;
+  margin-right: 30px;
+}
+
+.comment {
+  position: absolute;
+  z-index: 2; 
+  background-color: white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 15px;
+  border-radius: 8px;
+  width: 200px;
+  left: 50%;
+  margin-left: -100px;
+  bottom: 110%;
+  font-size: 13px;
+  font-family: PT Sans;
+}
+
+.comment::after {
+    content: " ";
+    position: absolute;
+    top: 100%; /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+
+@media (max-width: 748px) {
+  .techPageWrapper {
+    grid-template-rows: column(6, 1fr);
+    grid-template-columns: none;
+    margin: 30px 0;
+    row-gap: 50px;
+  }
+
+  .techWrapper > :first-child {
+    .comment {
+      margin-left: -40px;
+    }
+    .comment::after {
+      left: 20%;
+    }
+  }
+}
+

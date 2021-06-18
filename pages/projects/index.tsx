@@ -1,7 +1,7 @@
 import Container from '../../components/Container';
 import PageHeader from '../../components/PageHeader';
 import Footer from '../../components/Footer';
-import FeaturerdProject from '../../components/FeaturedProject';
+import FeaturedProject from '../../components/FeaturedProject';
 
 export default function Project() {
   return (
@@ -12,7 +12,7 @@ export default function Project() {
         subtitleOne="featured project"
         subtitleTwo="stock sentiment analysis"
       />
-      <FeaturerdProject />
+      <FeaturedProject />
       <Footer middleLink="skills" rightLabel="learn more" rightLink="https://github.com/liubryann/ddd"/>
     </Container>
   )

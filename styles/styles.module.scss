@@ -23,6 +23,11 @@ $nav-font: Helvetica;
   font-weight: 100;
 }
 
+.annotationStyle {
+  font-weight: 700;
+  opacity: 67%;
+}
+
 @media (max-width: 748px) {
   .subtitleStyle {
     font-size: 16px;
@@ -31,7 +36,12 @@ $nav-font: Helvetica;
   .headerStyle {
     font-size: 36px;
   }
+
+  .annotationStyle {
+    font-size: 14px;
+  }
 }
+
 
 .hideMobile {
   @media (max-width: 748px) {
