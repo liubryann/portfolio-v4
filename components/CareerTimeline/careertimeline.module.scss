@@ -1,0 +1,137 @@
+.timeline {
+  display: flex;
+  align-items: center;
+
+  .career {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+    flex-grow: 1;
+
+    .lineWrapper {
+      display: flex;
+      width: 100%;
+      margin: 15px 0;
+      align-items: center;
+      
+      .fill {
+        flex-grow: 1;
+        width: 100%;
+      }
+
+      .line {
+        height: 1px;
+        width: 100%;
+        flex-grow: 1;
+        background-color: rgba(0,0,0, 0.30);
+      }
+
+      .circle {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        background-color: rgba(0, 0, 0, 0.15);
+        border: 1px solid rgba(0,0,0,0.3);
+        position: relative;
+
+        .comment {
+          position: absolute;
+          z-index: 2; 
+          background-color: white;
+          box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+          padding: 15px;
+          border-radius: 8px;
+          width: 200px;
+          left: 50%;
+          margin-left: -100px;
+          bottom: 125%;
+          font-size: 13px;
+          font-family: PT Sans;
+
+          .title {
+            margin-bottom: 7px;
+            font-size: 15px;
+            opacity: 75%;
+          }
+        }
+
+        .comment::after {
+            content: " ";
+            position: absolute;
+            top: 100%; /* At the bottom of the tooltip */
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: white transparent transparent transparent;
+        }
+      }
+    }
+  }
+
+  .line {
+    height: 1px;
+    width: 100px;
+    background-color: rgba(0,0,0, 0.30);
+  }
+
+  .arrow {
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-left: 10px solid rgba(0,0,0,0.5);
+    border-bottom: 5px solid transparent;
+  }
+}
+
+@media (max-width: 748px) {
+  .timeline {
+    flex-direction: column;
+    height: 80vh;
+    padding-bottom: 50px;
+
+    .company {
+      width: 80px;
+      text-align: end;
+    }
+
+    .date {
+      width: 80px;
+    }
+
+    .career {
+      flex-direction: row;
+
+      .lineWrapper {
+        flex-direction: column;
+        height: 100%;
+        width: initial;
+        margin: 0 15px;
+        align-self: center;
+
+        .fill {
+          height: 100%;
+          width: initial;
+        }
+
+        .line {
+          width: 1px;
+          height: 100%;
+        }
+      }
+    }
+    .line {
+      width: 1px;
+      height: 30px;
+    }
+  
+    .arrow {
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 10px solid rgba(0,0,0,0.5);
+    }
+  }
+}
+

@@ -98,7 +98,7 @@ export default function FavouriteTech() {
         {
           name: "haskell",
           state: useState(false),
-          comment: "My first real introduction to functional programming that led me to often use functional features in other languages. Even though I'll probably never use it I have to respect the OG. "
+          comment: "My first real introduction to functional programming that led me to often use functional features in other languages. Even though I'll probably never use it I still have to respect the OG. "
         },
         {
           name: "rails",

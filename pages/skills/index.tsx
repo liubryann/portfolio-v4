@@ -13,7 +13,7 @@ export default function Skills() {
       />
       <FavouriteTech />
       <Footer 
-        middleLink="/career" 
+        middleLink="career" 
         rightLabel="boring tech" 
         rightLink="/skills/boring" 
       />
