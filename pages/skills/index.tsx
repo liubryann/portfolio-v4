@@ -1,7 +1,7 @@
 import Container from "../../components/Container";
 import PageHeader from "../../components/PageHeader";
 import Footer from "../../components/Footer";
-import FavouriteTech from "../../components/FavouriteTech";
+import FavouriteTech from "./FavouriteTech";
 
 
 export default function Skills() {

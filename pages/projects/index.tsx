@@ -1,7 +1,7 @@
 import Container from '../../components/Container';
 import PageHeader from '../../components/PageHeader';
 import Footer from '../../components/Footer';
-import FeaturedProject from '../../components/FeaturedProject';
+import FeaturedProject from './FeaturedProject';
 
 export default function Project() {
   return (

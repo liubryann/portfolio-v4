@@ -1,6 +1,6 @@
 import Container from "../../components/Container";
 import Footer from "../../components/Footer";
-import BoringStuff from '../../components/BoringStuff';
+import BoringStuff from './BoringStuff';
 
 export default function Boring() {
   return (

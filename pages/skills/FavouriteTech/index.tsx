@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import styles from './favouritetech.module.scss';
-import globalStyles from '../../styles/styles.module.scss';
+import globalStyles from '../../../styles/styles.module.scss';
 import Image from 'next/image';
-import FadeInWhenVisible from '../../lib/components/fade-in-visible';
+import FadeInWhenVisible from '../../../lib/components/fade-in-visible';
 
 
 export default function FavouriteTech() {

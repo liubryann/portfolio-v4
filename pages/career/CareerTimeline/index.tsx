@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import styles from './careertimeline.module.scss';
-import globalStyles from '../../styles/styles.module.scss';
-import FadeInWhenVisible from '../../lib/components/fade-in-visible';
+import globalStyles from '../../../styles/styles.module.scss';
+import FadeInWhenVisible from '../../../lib/components/fade-in-visible';
+import { BsFillInfoCircleFill } from 'react-icons/bs';
 
 export default function CareerTimeline() {
   const careerInfo = [
@@ -30,14 +31,14 @@ export default function CareerTimeline() {
     {
       company: "opentext",
       title: "Full Stack Software Developer Intern",
-      comment: "idk",
+      comment: "Worked on the admin client for OpentText Media Management, creating a wysiwyg editor for clients to fully customize and preview email notifications.",
       date: "2020",
       state: useState(false),
     },
     {
       company: "verto",
       title: "Full Stack Software Developer Intern",
-      comment: "idk",
+      comment: "Rapidly developing new features for the vaccine scheduling and lab testing solutions.",
       date: "2021",
       state: useState(false),
     }
@@ -56,7 +57,7 @@ export default function CareerTimeline() {
           )}
           
           <FadeInWhenVisible hover>
-            <div className={styles.circle} onMouseEnter={() => career.state[1](true)} onMouseLeave={() => career.state[1](false)} >
+            <div className={styles.circle} onMouseOver={() => career.state[1](true)} onMouseLeave={() => career.state[1](false)} >
               { career.state[0] && (
                 <div className={styles.comment}>
                   <div className={`${globalStyles.annotationStyle} ${styles.title}`} >{ career.title }</div>
@@ -73,10 +74,13 @@ export default function CareerTimeline() {
   })
 
   return (
-    <div className={styles.timeline}>
-      { careerInfoComponent }
-      <div className={styles.line} />
-      <div className={styles.arrow} />
+    <div className={styles.timelineWrapper}>
+      <div className={styles.timeline}>
+        { careerInfoComponent }
+        <div className={styles.line} />
+        <div className={styles.arrow} />
+      </div>
+      <div className={styles.info}><BsFillInfoCircleFill /><span>hover for more info</span></div>
     </div>
   )
 }

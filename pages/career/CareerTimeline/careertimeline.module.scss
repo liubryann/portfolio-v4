@@ -1,6 +1,14 @@
+.timelineWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
 .timeline {
   display: flex;
   align-items: center;
+  width: 100%;
 
   .career {
     display: flex;
@@ -18,6 +26,9 @@
       .fill {
         flex-grow: 1;
         width: 100%;
+        display: flex;
+        justify-content: center;
+        opacity: 67%;
       }
 
       .line {
@@ -35,7 +46,10 @@
         background-color: rgba(0, 0, 0, 0.15);
         border: 1px solid rgba(0,0,0,0.3);
         position: relative;
-
+        display: flex;
+        align-items: center;
+        justify-content: center;
+   
         .comment {
           position: absolute;
           z-index: 2; 
@@ -86,6 +100,17 @@
   }
 }
 
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 135px;
+  margin-top: 50px;
+  opacity: 67%;
+  font-size: 14px;
+  font-family: PT Sans;
+}
+
 @media (max-width: 748px) {
   .timeline {
     flex-direction: column;
@@ -132,6 +157,10 @@
       border-right: 5px solid transparent;
       border-top: 10px solid rgba(0,0,0,0.5);
     }
+  }
+
+  .info {
+    display: none;
   }
 }
 

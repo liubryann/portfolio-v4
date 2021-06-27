@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import styles from './featuredproject.module.scss';
-import useWindowSize from '../../lib/hooks/window-size';
-import FadeInWhenVisible from '../../lib/components/fade-in-visible';
+import useWindowSize from '../../../lib/hooks/window-size';
+import FadeInWhenVisible from '../../../lib/components/fade-in-visible';
 
 export default function FeaturedProject() {
   const isMobile = useWindowSize();

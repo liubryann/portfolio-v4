@@ -1,0 +1,37 @@
+.contactInfoWrapper {
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 40px;
+
+  .contactWrapper {
+    .blurb {
+      width: 500px;
+      opacity: 70%;
+      font-family: PT Sans;
+      font-size: 20px;
+      a {
+        font-weight: bold;
+        opacity: 100%;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .links {
+      width: 120px;
+      margin-top: 15px;
+      display: flex;
+      justify-content: space-between;
+      opacity: 67%;
+    }
+  }
+}
+
+@media (max-width: 748px ) {
+  .contactInfoWrapper .contactWrapper .blurb {
+    width: 100%;
+  }
+}
+

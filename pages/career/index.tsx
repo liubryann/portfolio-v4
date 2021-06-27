@@ -1,7 +1,7 @@
 import Container from '../../components/Container';
 import PageHeader from '../../components/PageHeader';
 import Footer from '../../components/Footer';
-import CareerTimeline from '../../components/CareerTimeline';
+import CareerTimeline from './CareerTimeline';
 
 export default function Career() {
   return (

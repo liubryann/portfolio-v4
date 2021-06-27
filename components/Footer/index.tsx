@@ -5,25 +5,33 @@ import Link from 'next/link';
 import globalStyles from '../../styles/styles.module.scss';
 
 interface FooterProps {
+  leftLabel?: JSX.Element,
   middleLabel?: string, 
-  middleLink: string,
+  middleLink?: string,
   rightLabel?: string,
   rightLink?: string
 }
 
-export default function Footer({ middleLabel, middleLink, rightLabel, rightLink }: FooterProps) {
+export default function Footer({ leftLabel, middleLabel, middleLink, rightLabel, rightLink }: FooterProps) {
   return (
     <footer className={styles.footerWrapper}>
-      <div className={styles.empty} />
-      <Link href={`/${middleLink}`} >
-        <a className={styles.footerMiddle}>
-          {middleLabel && <div className={styles.footerLabelStyle}>{ middleLabel }</div> }
-          <BsChevronCompactDown className={styles.footerMiddleIcon} />
-        </a>
-      </Link>
+      { leftLabel ? (
+        { ...leftLabel }
+      )
+        : <div className={styles.empty} />
+      }
+      { middleLink && (
+        <Link href={`/${middleLink}`} >
+          <a className={styles.footerMiddle}>
+            {middleLabel && <div className={styles.footerLabelStyle}>{ middleLabel }</div> }
+            <BsChevronCompactDown size={25} className={styles.footerMiddleIcon} />
+          </a>
+        </Link>
+      )}
+     
       { (rightLink && rightLabel) ? (
           <Link href={rightLink}>
-            {rightLabel && <a className={globalStyles.navStyle}>{rightLabel}</a> }
+            {rightLabel && <a className={`${globalStyles.navStyle} ${styles.footerRight}`}>{rightLabel}</a> }
           </Link>
         ) : <div className={styles.empty} />
       }
