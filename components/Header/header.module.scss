@@ -3,6 +3,24 @@
   display: flex; 
   justify-content: space-between;
   align-items: flex-end;
+
+  .apollo {
+    position: absolute;
+    top: 20px;
+    width: 60px;
+    height: 60px;
+    z-index: 3;
+    transition: all .2s ease-in-out;
+
+    @media (max-width: 748px) {
+      width: 45px;
+      height: 45px;
+      top: 30px;
+    }
+  }
+  .apollo:hover {
+    transform: scale(1.1);
+  }
 }
 
 .navWrapper {
@@ -27,3 +45,4 @@
   justify-content: flex-end;
   align-items: flex-end;
 }
+
