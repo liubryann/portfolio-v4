@@ -101,14 +101,7 @@
 }
 
 .info {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 135px;
   margin-top: 50px;
-  opacity: 67%;
-  font-size: 14px;
-  font-family: PT Sans;
 }
 
 @media (max-width: 748px) {
@@ -145,6 +138,11 @@
           width: 1px;
           height: 100%;
         }
+
+        .circle {
+          width: 35px;
+          height: 35px;
+        }
       }
     }
     .line {
@@ -157,10 +155,6 @@
       border-right: 5px solid transparent;
       border-top: 10px solid rgba(0,0,0,0.5);
     }
-  }
-
-  .info {
-    display: none;
   }
 }
 

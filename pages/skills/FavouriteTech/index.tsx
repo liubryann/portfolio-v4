@@ -3,6 +3,8 @@ import styles from './favouritetech.module.scss';
 import globalStyles from '../../../styles/styles.module.scss';
 import Image from 'next/image';
 import FadeInWhenVisible from '../../../lib/components/fade-in-visible';
+import useWindowSize from '../../../lib/hooks/window-size';
+import { BsFillInfoCircleFill } from 'react-icons/bs';
 
 
 export default function FavouriteTech() {
@@ -142,9 +144,16 @@ export default function FavouriteTech() {
     )
   })
 
+  const isMobile = useWindowSize();
+
   return (
+    <div>
+      { isMobile && (
+        <div className={`${globalStyles.infoStyle} ${styles.info}`}><BsFillInfoCircleFill /><span>tap for more info</span></div>
+      )}
     <div className={styles.techPageWrapper}>
       { gridComponents }
+    </div>
     </div>
   )
 }

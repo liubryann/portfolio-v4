@@ -13,7 +13,7 @@ export default function Header({ open, setOpen }) {
     'contact'
   ]
 
-  const [logo, setLogo] = useState("/images/apollo_mad.png");
+  const [logo, setLogo] = useState("/images/apollo_mad_dark.png");
 
   return (
     <div>
@@ -21,8 +21,8 @@ export default function Header({ open, setOpen }) {
       <div>
         <Link href="/">
           <a 
-            onMouseEnter={() => setLogo("/images/apollo_happy.png")} 
-            onMouseLeave={() => setLogo("/images/apollo_mad.png")}
+            onMouseEnter={() => setLogo("/images/apollo_happy_dark.png")} 
+            onMouseLeave={() => setLogo("/images/apollo_mad_dark.png")}
           >
             <img src={logo} className={styles.apollo}/>
           </a>

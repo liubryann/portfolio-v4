@@ -3,6 +3,7 @@ import styles from './careertimeline.module.scss';
 import globalStyles from '../../../styles/styles.module.scss';
 import FadeInWhenVisible from '../../../lib/components/fade-in-visible';
 import { BsFillInfoCircleFill } from 'react-icons/bs';
+import useWindowSize from '../../../lib/hooks/window-size';
 
 export default function CareerTimeline() {
   const careerInfo = [
@@ -44,6 +45,8 @@ export default function CareerTimeline() {
     }
   ]
 
+  const isMobile = useWindowSize();
+
   const careerInfoComponent = careerInfo.map((career) => {
     return (
       <div className={styles.career} key={career.company}>
@@ -76,11 +79,16 @@ export default function CareerTimeline() {
   return (
     <div className={styles.timelineWrapper}>
       <div className={styles.timeline}>
+      { isMobile && (
+        <div className={`${globalStyles.infoStyle} ${styles.info}`}><BsFillInfoCircleFill /><span>tap for more info</span></div>
+      )}
         { careerInfoComponent }
         <div className={styles.line} />
         <div className={styles.arrow} />
       </div>
-      <div className={styles.info}><BsFillInfoCircleFill /><span>hover for more info</span></div>
+      { !isMobile && (
+        <div className={`${globalStyles.infoStyle} ${styles.info}`}><BsFillInfoCircleFill /><span>hover for more info</span></div>
+      )}
     </div>
   )
 }

@@ -14,7 +14,7 @@ export default function ContactInfo() {
           </FadeInWhenVisible>
           <div className={styles.links}>
             <FadeInWhenVisible hover>
-              <Link href="">
+              <Link href="https://www.linkedin.com/in/bryanliu-2000/">
                 <a>
                   <FaLinkedin size={30} />
                 </a>
@@ -28,7 +28,7 @@ export default function ContactInfo() {
               </Link>
             </FadeInWhenVisible>
             <FadeInWhenVisible hover>
-              <Link href="">
+              <Link href="mailto:bryan.liu@utoronto.ca">
                 <a>
                   <FaEnvelope size={30} />
                 </a>
