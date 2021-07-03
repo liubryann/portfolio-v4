@@ -6,7 +6,7 @@ import styles from './pageheader.module.scss';
 interface PageHeaderProps {
   pageTitle: string,
   title: string, 
-  subtitleOne?: string, 
+  subtitleOne?: any, 
   subtitleTwo?: string,
 }
 

@@ -38,6 +38,10 @@ $nav-font: Helvetica;
   font-family: PT Sans;
 }
 
+.contentPadding {
+  padding-left: 45px;
+}
+
 @media (max-width: 748px) {
   .subtitleStyle {
     font-size: 16px;
@@ -53,6 +57,10 @@ $nav-font: Helvetica;
 
   .infoStyle {
     width: 125px;
+  }
+
+  .contentPadding {
+    padding-left: 0;
   }
 }
 

@@ -8,7 +8,7 @@ export default function Career() {
     <Container>
       <PageHeader 
         pageTitle="Career History"  
-        title="Career History"
+        title="CAREER HISTORY"
         subtitleOne="currently working as"
         subtitleTwo="junior full stack developer @verto"
       />

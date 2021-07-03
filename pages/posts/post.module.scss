@@ -1,0 +1,27 @@
+.postWrapper {
+  flex-grow: 1;
+  padding-top: 12px;
+}
+
+.content {
+  font-family: PT Sans;
+  font-size: 20px;
+  max-width: 700px;
+  opacity: 70%;
+
+  a {
+    font-weight: bold;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+
+  h1, h2, h3, h4 {
+    opacity: 90%;
+    font-weight: 100;
+  }
+
+  img {
+    width: 95%;
+  }
+}

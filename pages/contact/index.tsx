@@ -12,7 +12,7 @@ export default function Contact() {
     <Container>
       <PageHeader 
         pageTitle="Contact"  
-        title="Contact"
+        title="CONTACT"
       />
       <ContactInfo />
       <Footer leftLabel={<LeftFooter />} rightLabel="source" rightLink="https://github.com/liubryann/portfolio-v4/"/>

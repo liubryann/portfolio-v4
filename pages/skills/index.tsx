@@ -9,7 +9,7 @@ export default function Skills() {
     <Container>
       <PageHeader 
         pageTitle="Favourite Tech"  
-        title="Favourite Tech"
+        title="FAVOURITE TECH"
       />
       <FavouriteTech />
       <Footer 
