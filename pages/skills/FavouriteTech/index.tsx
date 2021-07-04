@@ -127,10 +127,8 @@ export default function FavouriteTech() {
                   )}
                   <div className={styles.techItem} onMouseEnter={() => tech.state[1](true)} onMouseLeave={() => tech.state[1](false)}>
                     <div className={styles.imageWrapper}>
-                      <Image
+                      <img
                         src={`/images/tech/${tech.name}.png`}
-                        layout="fill"
-                        objectFit="contain"
                       />
                     </div>
                     <div className={globalStyles.annotationStyle}>{tech.name}</div>

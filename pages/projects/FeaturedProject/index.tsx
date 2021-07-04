@@ -47,15 +47,15 @@ export default function FeaturedProject() {
         </div>
       )
       : (
-        <div className={`${styles.imageWrapper} `}>
-          <Image
-            src="/images/ddd.png"
-            width={1200}
-            height={600}
-            layout="intrinsic"
-            className="animate__animated animate__fadeInUp"
-          />
-        </div>
+        <FadeInWhenVisible>
+          <div className={`${styles.wrapper} `}>
+            <div className={`${styles.imageWrapper} `}>
+              <img
+                src="/images/ddd.png"
+              />
+            </div>
+          </div>
+        </FadeInWhenVisible>
       )
     }
     </div>
