@@ -7,7 +7,7 @@ export default function BlogList({ allPostsData }) {
   return (
     <div className={styles.listWrapper}>
       <ul className={`${styles.list} ${globalStyles.contentPadding}`}>
-        { allPostsData.map(({ id, date, title }) => (
+        { allPostsData && allPostsData.map(({ id, date, title }) => (
         <li key={id} >
           <Link href={`/posts/${id}`}>
             <a className={`${globalStyles.subtitleStyle} ${styles.listItem}`}>
