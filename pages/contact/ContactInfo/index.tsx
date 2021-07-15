@@ -9,7 +9,7 @@ export default function ContactInfo() {
         <div className={styles.contactWrapper}>
         <FadeInWhenVisible>
             <div className={styles.blurb}>
-              Hey! It looks like you made it to the end of my website. Make sure to check out my <Link href="/blog"><a>blog</a></Link> or <Link href=""><a>resume</a></Link> before you go and feel free to contact me at any of these links!
+              Hey! It looks like you made it to the end of my website. Make sure to check out my <Link href="/blog"><a>blog</a></Link> before you go and feel free to contact me at any of these links!
             </div>
           </FadeInWhenVisible>
           <div className={styles.links}>
