@@ -3,6 +3,7 @@ import Cors from 'cors';
 import initMiddleware from '../../lib/init-middleware';
 import { connectToDatabase } from '../../lib/mongodb';
 import type { PostComment } from './posts';
+import type { Db } from 'mongodb';
 
 const cors = initMiddleware(
   Cors({
@@ -25,11 +26,12 @@ export interface Comment {
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   await cors(req, res);
+  const { db } = await connectToDatabase();
 
   const { method } = req;
     switch(method) {
       case 'POST':
-        return submitNewComment(req, res);
+        return submitNewComment(req, res, db);
       case 'PUT':
         return replyToComment(req, res);
       case 'GET':
@@ -49,8 +51,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
  * }
  * @returns the new comment
  */
-const submitNewComment = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { db } = await connectToDatabase();
+export const submitNewComment = async (req: NextApiRequest, res: NextApiResponse, db: Db) => {
   const { title, date, comment } = req.body;
 
   if (!comment || !title || !comment) {
@@ -65,7 +66,7 @@ const submitNewComment = async (req: NextApiRequest, res: NextApiResponse) => {
     $push: { "comments": commentDoc }
   }
   
-  db.collection<PostComment>('comments').updateOne(query, updateDocument, (error, result) => {
+  await db.collection<PostComment>('comments').updateOne(query, updateDocument, (error, result) => {
     if (!error) {
       if (result.modifiedCount === 1) {
         return res.status(200).json(commentDoc)

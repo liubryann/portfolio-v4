@@ -3,6 +3,7 @@ import Cors from 'cors';
 import initMiddleware from '../../lib/init-middleware';
 import { connectToDatabase } from '../../lib/mongodb';
 import type { Comment } from './comments';
+import type { Db } from 'mongodb';
 
 const cors = initMiddleware(
   Cors({
@@ -20,10 +21,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   await cors(req, res);
 
   const { method } = req;
+  const { db } = await connectToDatabase();
 
   switch(method) {
     case 'POST':
-      submitNewPost(req, res);
+      submitNewPost(req, res, db);
       break;
     default: 
       res.setHeader('Allow', ['POST'])
@@ -39,9 +41,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
  * }
  * @returns the new blog post 
  */
-const submitNewPost = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { db } = await connectToDatabase();
-
+export const submitNewPost = async (req: NextApiRequest, res: NextApiResponse, db: Db) => {
   const { title, date } = req.body;
 
   if (!title || !date) {
