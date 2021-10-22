@@ -10,7 +10,7 @@ const cors = initMiddleware(
   })
 )
 
-interface PostComment {
+export interface PostComment {
   title: string,
   date: Date, 
   comments: Comment[]
@@ -48,12 +48,12 @@ const submitNewPost = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(400).json({ error: "Missing body param" });
   }
 
-  const postCommentDoc: PostComment = { title: title, date: date, comments: [] }
+  const postCommentDoc: PostComment = { title: title, date: new Date(date), comments: [] }
 
-  try {
-    db.collection("comments").insertOne(postCommentDoc);
-    return res.status(200).json(postCommentDoc);
-  } catch (e) {
-    return res.status(500).json({ error: e.message });
-  }
+  db.collection<PostComment>("comments").insertOne(postCommentDoc, (error, result) => {
+    if (!error && result) {
+      return res.status(200).json(result.ops[0])
+    }
+    return res.status(500).json({ error: error.message });
+  })
 }
