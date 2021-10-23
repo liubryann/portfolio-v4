@@ -10,13 +10,6 @@ const cors = initMiddleware(
     methods: ['POST', 'PUT', 'GET'],
   })
 )
-
-export const config = {
-  api: {
-    externalResolver: true,
-  },
-}
-
 export interface Comment {
   name: string, 
   date: Date, 
@@ -35,7 +28,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       case 'PUT':
         return replyToComment(req, res, db);
       case 'GET':
-        return getComments(req, res);
+        return getComments(req, res, db);
       default: 
         res.setHeader('Allow', ['POST', 'PUT', 'GET'])
         res.status(405).end(`Method ${method} Not Allowed`)
@@ -51,7 +44,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
  * }
  * @returns the new comment
  */
-export const submitNewComment = (req: NextApiRequest, res: NextApiResponse, db: Db) => {
+export const submitNewComment = async (req: NextApiRequest, res: NextApiResponse, db: Db) => {
   const { title, date, comment } = req.body;
 
   if (!comment || !title || !comment) {
@@ -65,16 +58,16 @@ export const submitNewComment = (req: NextApiRequest, res: NextApiResponse, db: 
   const updateDocument = {
     $push: { "comments": commentDoc }
   }
-  
-  db.collection<PostComment>('comments').updateOne(query, updateDocument, (error, result) => {
-    if (!error) {
-      if (result.modifiedCount === 1) {
-        return res.status(200).json(commentDoc);
-      }
-      return res.status(404).json({ error: "Could not find matching post" });
+
+  try {
+    const result = await db.collection<PostComment>('comments').updateOne(query, updateDocument)
+    if (result.modifiedCount === 1) {
+      return res.status(200).json(commentDoc);
     }
-    return res.status(500).json({ error: error.message });
-  });
+    return res.status(404).json({ error: "Could not find matching post" });
+  } catch(e) {
+    return res.status(500).json({ error: e.message });
+  }
 }
 
 /**
@@ -112,15 +105,15 @@ export const replyToComment = async (req: NextApiRequest, res: NextApiResponse, 
     ]
   }
 
-  db.collection<PostComment>('comments').updateOne(query, updateDocument, options, (error, result) => {
-    if (!error) {
-      if (result.modifiedCount === 1) {
-        return res.status(200).json(replyDoc)
-      }
-      return res.status(404).json({ error: "Could not find matching post or comment" })
+  try { 
+    const result = await db.collection<PostComment>('comments').updateOne(query, updateDocument, options)
+    if (result.modifiedCount === 1) {
+      return res.status(200).json(replyDoc)
     }
-    return res.status(500).json({ error: error.message });
-  })
+    return res.status(404).json({ error: "Could not find matching post or comment" })
+  } catch(e) {
+    return res.status(500).json({ error: e.message });
+  }
 }
 
 /**
@@ -131,20 +124,20 @@ export const replyToComment = async (req: NextApiRequest, res: NextApiResponse, 
  * }
  * @returns the comments in the blog post
  */
-const getComments = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { db } = await connectToDatabase();
+export const getComments = async (req: NextApiRequest, res: NextApiResponse, db: Db) => {
   const { title, date } = req.body;
 
   if (!title || !date) {
     return res.status(400).json({ error: "Missing body param" })
   }
-  db.collection<PostComment>('comments').findOne({ "title": title, "date": date }, (error, result) => {
-    if (!error) {
-      if (result){
-        return res.status(200).json(result);
-      }
-      return res.status(404).json({ error: "Could not find matching post" })
+
+  try {
+    const result = await db.collection<PostComment>('comments').findOne({ "title": title, "date": new Date(date) })
+    if (result) {
+      return res.status(200).json(result);
     }
-    return res.status(500).json({ error: error.message })
-  })
+    return res.status(404).json({ error: "Could not find matching post" })
+  } catch(e) {
+    return res.status(500).json({ error: e.message })
+  }
 }

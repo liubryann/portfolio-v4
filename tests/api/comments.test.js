@@ -1,8 +1,7 @@
 const { MongoClient } = require('mongodb');
 const { submitNewPost } = require('../../pages/api/posts');
-const { submitNewComment, replyToComment } = require('../../pages/api/comments');
+const { submitNewComment, replyToComment, getComments } = require('../../pages/api/comments');
 const { createMocks } = require('node-mocks-http');
-const { EventEmitter } = require('events');
 
 describe('Test api/comments', () => {
   let connection;
@@ -13,6 +12,8 @@ describe('Test api/comments', () => {
     date: new Date("2021-10-22")
   }
 
+  let comment; // Use for querying the inital comment
+
   beforeAll(async () => {
     connection = await MongoClient.connect(global.__MONGO_URI__, {
       useNewUrlParser: true,
@@ -20,12 +21,21 @@ describe('Test api/comments', () => {
     });
     db = await connection.db(global.__MONGO_DB_NAME__);
 
+    // Make an inital post
     const { req, res } = createMocks({
       method: 'POST',
       body: postBody,
     })
-
     await submitNewPost(req, res, db)
+
+    // Make an inital comment
+    const commentBody = { ...postBody, comment: "Reply to me!" }
+    const { req: req2, res: res2 } = createMocks({
+      method: 'POST',
+      body: commentBody,
+    })
+    await submitNewComment(req2, res2, db)
+    comment = JSON.parse(res2._getData());
   })
 
   afterAll(async () => {
@@ -62,41 +72,25 @@ describe('Test api/comments', () => {
     const { req, res } = createMocks({
       method: 'POST',
       body: commentBody,
-    },
-    {
-      eventEmitter: EventEmitter
     })
 
     await submitNewComment(req, res, db);
-
-    return new Promise((resolve, reject) => {
-      res.on('end', async () => {
-        expect(res._getStatusCode()).toEqual(200);
-        resolve();
-      })
-    })
+    expect(res._getStatusCode()).toEqual(200);
   })
 
   it('POST api/comments should respond with 400 with invalid input', async () => {
     const { req, res } = createMocks({
       method: 'POST',
       body: postBody, // missing the comment field
-    },
-    {
-      eventEmitter: EventEmitter
     })
 
     await submitNewComment(req, res, db);
-
-    return new Promise((resolve, reject) => {
-      expect(res._getStatusCode()).toEqual(400)
-      resolve();
-    })
+    expect(res._getStatusCode()).toEqual(400)
   })
 
   it('POST api/comments should respond with 404 for no matching post', async () => {
     const nonexistingPostBody = {
-      title: "I hate testing",
+      title: "I hate testing", // non-existing post
       date: "2021-10-21",
       comment: "I hate testing too!"
     }
@@ -104,45 +98,13 @@ describe('Test api/comments', () => {
     const { req, res } = createMocks({
       method: 'POST',
       body: nonexistingPostBody,
-    },
-    {
-      eventEmitter: EventEmitter
     })
 
     await submitNewComment(req, res, db);
-
-    return new Promise((resolve, reject) => {
-      res.on('end', () => {
-        expect(res._getStatusCode()).toEqual(404);
-        resolve();
-      })
-    })
+    expect(res._getStatusCode()).toEqual(404);
   })
 
-  it('PUT api/comments should respond with 200', async () => {
-    const commentBody = { ...postBody, comment: "Reply to me!" }
-    
-    const { req: req1, res: res1 } = createMocks({
-      method: 'POST',
-      body: commentBody,
-    },
-    {
-      eventEmitter: EventEmitter
-    })
-
-    // make a new comment
-    await submitNewComment(req1, res1, db)
-
-    let comment;
-    
-    await new Promise((resolve, reject) => {
-      res1.on('end', () => {
-        expect(res1._getStatusCode()).toEqual(200)
-        comment = JSON.parse(res1._getData());
-        resolve();
-      })
-    })
-  
+  it('PUT api/comments should respond with 200', async () => {    
     const replyBody = {
       postTitle: "I love testing",
       postDate: new Date("2021-10-22"),
@@ -151,22 +113,88 @@ describe('Test api/comments', () => {
       comment: "Hi! I'm replying to you!"
     }
 
-    const { req: req2, res: res2 } = createMocks({
+    const { req, res } = createMocks({
       method: 'PUT',
       body: replyBody
-    },
-    {
-      eventEmitter: EventEmitter
     })
     
-    // reply to the comment
-    await replyToComment(req2, res2, db);
+    await replyToComment(req, res, db);
+    expect(res._getStatusCode()).toEqual(200)
+  })
 
-    return new Promise((resolve, reject) => {
-      res2.on('end', () => {
-        expect(res2._getStatusCode()).toEqual(200)
-        resolve();
-      })
+  it('PUT api/comments should respond with 400 with invalid input', async () => {
+    const replyBody = {
+      postTitle: "I love testing",
+      postDate: new Date("2021-10-22"),
+      commentName: comment.name,
+      commentDate: new Date(comment.date),
+      // missing the comment field
+    }
+
+    const { req, res } = createMocks({
+      method: 'PUT',
+      body: replyBody 
     })
+
+    await replyToComment(req, res, db);
+    expect(res._getStatusCode()).toEqual(400)
+  })
+
+  it('PUT api/comments should respond with 404 with no matching comment', async () => {
+    const replyBody = {
+      postTitle: "I love testing",
+      postDate: new Date("2021-10-22"),
+      commentName: "Mr. I don't exist", // non-existing comment
+      commentDate: new Date(comment.date),
+      comment: "Hi! I'm replying to you!"
+    }
+
+    const { req, res } = createMocks({
+      method: 'PUT',
+      body: replyBody 
+    })
+
+    await replyToComment(req, res, db);
+    expect(res._getStatusCode()).toEqual(404)
+  })
+
+  it('GET api/comments should respond with 200', async () => {
+    const { req, res } = createMocks({
+      method: 'GET',
+      body: postBody
+    })
+
+    await getComments(req, res, db); 
+    expect(res._getStatusCode()).toEqual(200)
+  })
+
+  it('GET api/comments should respond with 400 with invalid input', async () => {
+    const invalidPostBody = {
+      // missing title
+      date: new Date("2021-10-22")
+    }
+
+    const { req, res } = createMocks({
+      method: 'GET',
+      body: invalidPostBody
+    })
+
+    await getComments(req, res, db);
+    expect(res._getStatusCode()).toEqual(400)
+  })
+
+  it('GET api/comments should respond with 404 with no matching post', async () => {
+    const nonExistingPostBody = {
+      title: "I hate testing", // non-existing post
+      date: new Date("2021-10-22")
+    }
+
+    const { req, res } = createMocks({
+      method: 'GET',
+      body: nonExistingPostBody
+    })
+
+    await getComments(req, res, db);
+    expect(res._getStatusCode()).toEqual(404)
   })
 })
