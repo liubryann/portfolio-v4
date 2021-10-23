@@ -33,7 +33,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       case 'POST':
         return submitNewComment(req, res, db);
       case 'PUT':
-        return replyToComment(req, res);
+        return replyToComment(req, res, db);
       case 'GET':
         return getComments(req, res);
       default: 
@@ -51,7 +51,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
  * }
  * @returns the new comment
  */
-export const submitNewComment = async (req: NextApiRequest, res: NextApiResponse, db: Db) => {
+export const submitNewComment = (req: NextApiRequest, res: NextApiResponse, db: Db) => {
   const { title, date, comment } = req.body;
 
   if (!comment || !title || !comment) {
@@ -66,12 +66,12 @@ export const submitNewComment = async (req: NextApiRequest, res: NextApiResponse
     $push: { "comments": commentDoc }
   }
   
-  await db.collection<PostComment>('comments').updateOne(query, updateDocument, (error, result) => {
+  db.collection<PostComment>('comments').updateOne(query, updateDocument, (error, result) => {
     if (!error) {
       if (result.modifiedCount === 1) {
-        return res.status(200).json(commentDoc)
+        return res.status(200).json(commentDoc);
       }
-      return res.status(404).json({ error: "Could not find matching post" })
+      return res.status(404).json({ error: "Could not find matching post" });
     }
     return res.status(500).json({ error: error.message });
   });
@@ -88,8 +88,7 @@ export const submitNewComment = async (req: NextApiRequest, res: NextApiResponse
  * }
  * @returns the new reply comment
  */
-const replyToComment = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { db } = await connectToDatabase();
+export const replyToComment = async (req: NextApiRequest, res: NextApiResponse, db: Db) => {
   const { postTitle, postDate, commentName, commentDate, comment } = req.body; 
 
   if (!postTitle || !postDate || !commentName || !commentDate || !comment) {
