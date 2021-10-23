@@ -46,26 +46,6 @@ describe('Test api/comments', () => {
     return await db.collection('comments').findOne(postBody);
   }
 
-  // it('POST api/posts should respond with 200', async () => {
-  //   // const postBody = {
-  //   //   title: "I love testing",
-  //   //   date: new Date("2021-10-22")
-  //   // }
-
-  //   // const { req, res } = createMocks({
-  //   //   method: 'POST',
-  //   //   body: postBody,
-  //   // })
-
-  //   // await submitNewPost(req, res, db)
-
-  //   // expect(res._getStatusCode()).toEqual(200)
-
-  //   // const comments = db.collection('comments');
-  //   // const insertedPost = await comments.findOne(postBody);
-  //   // expect(insertedPost).toBeTruthy();
-  // })
-
   it('POST api/comments should respond with 200', async () => {
     const commentBody = { ...postBody, comment: "I love testing too!" }
 

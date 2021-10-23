@@ -17,7 +17,7 @@ export interface Comment {
   replies?: Comment[]
 }
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   await cors(req, res);
   const { db } = await connectToDatabase();
 
@@ -141,3 +141,5 @@ export const getComments = async (req: NextApiRequest, res: NextApiResponse, db:
     return res.status(500).json({ error: e.message })
   }
 }
+
+export default handler;

@@ -17,7 +17,7 @@ export interface PostComment {
   comments: Comment[]
 }
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   await cors(req, res);
 
   const { method } = req;
@@ -57,3 +57,5 @@ export const submitNewPost = async (req: NextApiRequest, res: NextApiResponse, d
     return res.status(500).json({ error: error.message });
   })
 }
+
+export default handler;
