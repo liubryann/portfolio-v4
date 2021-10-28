@@ -1,0 +1,15 @@
+.commentContainer {
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: row;
+  }
+}

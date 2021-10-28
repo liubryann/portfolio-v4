@@ -141,7 +141,7 @@ describe('Test api/comments', () => {
   it('GET api/comments should respond with 200', async () => {
     const { req, res } = createMocks({
       method: 'GET',
-      body: postBody
+      query: postBody
     })
 
     await getComments(req, res, db); 
@@ -156,7 +156,7 @@ describe('Test api/comments', () => {
 
     const { req, res } = createMocks({
       method: 'GET',
-      body: invalidPostBody
+      query: invalidPostBody
     })
 
     await getComments(req, res, db);
@@ -171,7 +171,7 @@ describe('Test api/comments', () => {
 
     const { req, res } = createMocks({
       method: 'GET',
-      body: nonExistingPostBody
+      query: nonExistingPostBody
     })
 
     await getComments(req, res, db);

@@ -12,7 +12,7 @@ const cors = initMiddleware(
 )
 export interface Comment {
   name: string, 
-  date: Date, 
+  date: string | Date, 
   comment: string, 
   replies?: Comment[]
 }
@@ -56,7 +56,10 @@ export const submitNewComment = async (req: NextApiRequest, res: NextApiResponse
   const commentDoc: Comment = { name: "poohead", comment: comment, date: new Date(), replies: [] }
 
   const updateDocument = {
-    $push: { "comments": commentDoc }
+    $push: { "comments": {
+      $each: [ commentDoc ],
+      $position: 0
+    } }
   }
 
   try {
@@ -125,7 +128,7 @@ export const replyToComment = async (req: NextApiRequest, res: NextApiResponse, 
  * @returns the comments in the blog post
  */
 export const getComments = async (req: NextApiRequest, res: NextApiResponse, db: Db) => {
-  const { title, date } = req.body;
+  const { title, date } = req.query;
 
   if (!title || !date) {
     return res.status(400).json({ error: "Missing body param" })
