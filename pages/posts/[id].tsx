@@ -32,7 +32,9 @@ export default function Post({ postData }) {
       <article className={styles.postWrapper}>
         <div className={`${globalStyles.contentPadding} ${styles.content}`} dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
-      <PostComments postTitle={postData.title} postDate={postData.date}/>
+      <div className={`${globalStyles.contentPadding} ${styles.comments}`}>
+        <PostComments postTitle={postData.title} postDate={postData.date}/>
+      </div>
       <Footer />
     </Container>
   )

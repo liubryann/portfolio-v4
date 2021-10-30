@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import Cors from 'cors';
+import { generateSlug } from 'random-word-slugs';
 import initMiddleware from '../../lib/init-middleware';
 import { connectToDatabase } from '../../lib/mongodb';
 import type { PostComment } from './posts';
@@ -12,7 +13,7 @@ const cors = initMiddleware(
 )
 export interface Comment {
   name: string, 
-  date: string | Date, 
+  date: Date, 
   comment: string, 
   replies?: Comment[]
 }
@@ -53,7 +54,7 @@ export const submitNewComment = async (req: NextApiRequest, res: NextApiResponse
 
   const query = { "title": title, "date": new Date(date) }
 
-  const commentDoc: Comment = { name: "poohead", comment: comment, date: new Date(), replies: [] }
+  const commentDoc: Comment = { name: generateSlug(2, { format: 'lower' }), comment: comment, date: new Date(), replies: [] }
 
   const updateDocument = {
     $push: { "comments": {
@@ -93,7 +94,7 @@ export const replyToComment = async (req: NextApiRequest, res: NextApiResponse, 
 
   const query = { "title": postTitle, "date": new Date(postDate) }
 
-  const replyDoc: Comment = { name: "peepeehead", comment: comment, date: new Date() }
+  const replyDoc: Comment = { name: generateSlug(2, { format: 'lower' }), comment: comment, date: new Date() }
 
   const updateDocument = {
     $push: { "comments.$[comment].replies": replyDoc }

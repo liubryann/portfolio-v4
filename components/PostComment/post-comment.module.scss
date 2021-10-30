@@ -1,4 +1,41 @@
 .postCommentContainer {
   display: flex;
   flex-direction: column;
+  gap: 27px;
+
+  .commentBox {
+    width: 100%;
+    margin-top: 25px;
+    padding: 10px 10px 5px 0;
+    font-family: PT Sans;
+    font-size: 16px;
+    resize: none;
+    border: none;
+    border-bottom: solid 1px rgba(0.99, 0.99, 0.99, 0.45);
+    overflow: auto;
+    outline: none;
+  }
+  .buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: -20px;
+
+    .button {
+      background: none;
+      border: none;
+      font-family: PT Sans;
+      font-size: 16px;
+      opacity: 70%;
+    }
+    .button:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.header {
+  font-family: PT Sans;
+  font-size: 30px;
+  opacity: 63%;
+  font-weight: 100;
 }
