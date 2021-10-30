@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  validate_project:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build and run lint and tests
+        run: |
+          yarn install --frozen-lockfile
+          yarn build
+          yarn lint
+          yarn test
