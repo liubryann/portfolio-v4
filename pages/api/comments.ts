@@ -131,12 +131,14 @@ export const replyToComment = async (req: NextApiRequest, res: NextApiResponse, 
 export const getComments = async (req: NextApiRequest, res: NextApiResponse, db: Db) => {
   const { title, date } = req.query;
 
+  const parsedDate = new Date(date as string)
+
   if (!title || !date) {
     return res.status(400).json({ error: "Missing body param" })
   }
 
   try {
-    const result = await db.collection<PostComment>('comments').findOne({ "title": title, "date": new Date(date) })
+    const result = await db.collection<PostComment>('comments').findOne({ "title": title, "date": parsedDate })
     if (result) {
       return res.status(200).json(result);
     }

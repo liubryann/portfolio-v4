@@ -110,14 +110,12 @@ export default function Comment({
             </form>
           </div>
         }
-        {
-          expandReplies && (
+        { expandReplies && (
             <div className={styles.replies}>
               {repliesComponent}
             </div>
           )
         }
-        
       </div>
     </div>
   )
