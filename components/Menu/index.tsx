@@ -2,6 +2,9 @@ import styles from './menu.module.scss';
 import globalStyles from '../../styles/styles.module.scss';
 import Link from 'next/link';
 
+/**
+ * Menu in mobile
+ */
 export default function Menu() {
   const links = [
     'blog',

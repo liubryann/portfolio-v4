@@ -17,6 +17,7 @@ export default function FeaturedProject() {
               src={`/images/project_mobile_1.png`}
               width={598}
               height={200}
+              alt="current stock info"
             />
           </FadeInWhenVisible>
           <div className={styles.verticalSpace} />
@@ -25,6 +26,7 @@ export default function FeaturedProject() {
               src={`/images/project_mobile_2.png`}
               width={598}
               height={400}
+              alt="historic price chart"
             />
           </FadeInWhenVisible>
           <div className={styles.verticalSpace} />
@@ -33,6 +35,7 @@ export default function FeaturedProject() {
               src={`/images/project_mobile_3.png`}
               width={598}
               height={340}
+              alt="posts queried from stock forums and news articles"
             />
           </FadeInWhenVisible>
           <div className={styles.verticalSpace} />
@@ -41,6 +44,7 @@ export default function FeaturedProject() {
             src={`/images/project_mobile_4.png`}
             width={598}
             height={320}
+            alt="sentiment analyis done from google nlp"
           />
           </FadeInWhenVisible>
           <div className={styles.verticalSpace} />
@@ -52,6 +56,7 @@ export default function FeaturedProject() {
             <div className={`${styles.imageWrapper} `}>
               <img
                 src="/images/ddd.png"
+                alt="Due Dilligence for Dummies"
               />
             </div>
           </div>

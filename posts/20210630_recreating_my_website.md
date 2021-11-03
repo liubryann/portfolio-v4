@@ -5,7 +5,7 @@ date: '2021-06-30'
 
 Hello, and welcome to my first ever blog post where I'll be going through the process of recreating my website (for the 4th time). 
 
-To preface, I used to really like using component libraries to create my websites. For my [old website](nervous-mclean-891e74.netlify.app), I tried out the Ant Design library. 
+To preface, I used to really like using component libraries to create my websites. For my [old website](https://nervous-mclean-891e74.netlify.app/), I tried out the Ant Design library. 
 
 What I noticed during its development was that I felt *restricted* in my ability to customize and design my website in my vision. 
 

@@ -16,7 +16,7 @@
     "date-fns": "^2.22.1",
     "framer-motion": "^4.1.17",
     "gray-matter": "^4.0.3",
-    "lodash": "^4.17.21",
+    "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
     "mongodb": "^3.5.9",
     "next": "^11.1.2",
@@ -29,8 +29,7 @@
     "remark": "^13.0.0",
     "remark-html": "^13.0.1",
     "remark-images": "^2.0.0",
-    "sass": "^1.32.12",
-    "swr": "^1.0.1"
+    "sass": "^1.32.12"
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.15.4",

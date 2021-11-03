@@ -7,7 +7,7 @@ import { submitComment, submitReply, getComments } from "../../lib/services/comm
 
 import styles from './post-comment.module.scss';
 
-import { debounce } from 'lodash';
+import debounce from 'lodash.debounce';
 
 interface PostCommentProps {
   postTitle: string, // title of the post

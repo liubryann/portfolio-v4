@@ -8,10 +8,10 @@ export default function BoringStuff() {
   const languages = ['Java', 'C', 'HTML', 'CSS']; 
   const languagesComponent = turnToList(languages);
 
-  const databases = ['MongoDB', 'SQL', 'Cloud Firestore', 'Neo4j']
+  const databases = ['MongoDB', 'PostgreSQL', 'Neo4j']
   const databasesComponent = turnToList(databases);
 
-  const other = ['Git', 'SVN']
+  const other = ['Git']
   const otherComponent = turnToList(other);
 
   return (

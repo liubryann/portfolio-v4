@@ -14,6 +14,7 @@
     border-bottom: solid 1px rgba(0.99, 0.99, 0.99, 0.45);
     overflow: auto;
     outline: none;
+    border-radius: 0;
   }
   .buttonContainer {
     display: flex;
@@ -26,6 +27,7 @@
       font-family: PT Sans;
       font-size: 16px;
       opacity: 70%;
+      padding-right: 0;
     }
     .button:hover {
       text-decoration: underline;

@@ -9,8 +9,7 @@ export default function Career() {
       <PageHeader 
         pageTitle="Career History"  
         title="CAREER HISTORY"
-        subtitleOne="currently working as"
-        subtitleTwo="junior full stack developer @verto"
+        subtitleOne="upcoming SDE intern @amazon"
       />
       <CareerTimeline />
       <Footer 

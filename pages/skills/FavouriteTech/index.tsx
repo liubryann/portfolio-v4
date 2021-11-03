@@ -14,17 +14,14 @@ export default function FavouriteTech() {
       tech: [
         {
           name: "react",
-          state: useState(false),
           comment: "This is my bread and butter. Awesome for quickly prototyping a frontend for small scale projects, but I'm experimenting with NextJS (this) for production builds."
         },
         {
           name: "vue",
-          state: useState(false),
           comment: "I learned to really like Vue due to how structured and organized their components feel. I find that my large React components can sometimes become messy."
         },
         {
           name: "angular",
-          state: useState(false),
           comment: "I wasn't gonna put this on here, but I can see the advantage it provides to enterprise applications through its architectural design patterns."
         }
       ],
@@ -34,14 +31,16 @@ export default function FavouriteTech() {
       tech: [
         {
           name: "docker",
-          state: useState(false),
-          comment: "Does knowing the basic Docker commands mean I know Docker?"
+          comment: "Docker is great for automatically setting up people's development environment for a project."
         },
         {
           name: "redux",
-          state: useState(false),
           comment: "Essential for managing state in large applications, as well as in combination with libraries like Redux Thunk for running side effects.",
-        }
+        },
+        {
+          name: "lodash",
+          comment: "I primarily use debounce and throttle, but there's a huge library of methods that make unnecessarily complicated Javascript functions simple again."
+        },
       ]
     },
     {
@@ -49,13 +48,11 @@ export default function FavouriteTech() {
       tech: [
         {
           name: "typescript",
-          state: useState(false),
-          comment: "This should actually be JavaScript, but TypeScript is all the hype these days and it has certainly caught many type issues for me already."
+          comment: "Even though working in Javascript is a lot faster, I'm still trying to adopt Typescript because it's great for catching typed errors."
         },
         {
           name: "python",
-          state: useState(false),
-          comment: "The best part about python is how easy it is pick up and providing access to powerful data manipulation libraries like pandas and numpy."
+          comment: "The best part about Python is how easy it is pick up and providing access to powerful data manipulation libraries like pandas and numpy."
         }
       ]
     },
@@ -63,19 +60,16 @@ export default function FavouriteTech() {
       label: "still learning",
       tech: [
         {
-          name: "lodash",
-          state: useState(false),
-          comment: "Sometimes a simple function like sum in JavaScript is unnecessarily complicated having to use reduce, but Lodash makes these things simple again."
+          name: "jest",
+          comment: "Testing is important, and what better way to test React and Javascript than Jest."
         },
         {
-          name: "graphql",
-          state: useState(false),
-          comment: "As someone who works a lot in the frontend, being able to query for the exact data in the shape I want is amazing so sign me up."
+          name: "webpack",
+          comment: "I want to publish a module to the npm registry so I'll have to learn this eventually to minimize bundle size."
         },
         {
-          name: "redux-saga",
-          state: useState(false),
-          comment: "A side effect library that I'm experimenting with. To be honest, I'm not sure what the advantage over Redux Thunk is yet."
+          name: "lighthouse",
+          comment: "This looks like a good tool to measure a webpage's performance."
         }
       ]
     },
@@ -84,13 +78,11 @@ export default function FavouriteTech() {
       tech: [
         {
           name: "express",
-          state: useState(false),
           comment: "If I'm using NodeJS for my backend for whatever reason, this is my go-to for creating API endpoints."
         },
         {
           name: "flask",
-          state: useState(false),
-          comment: "Super simple to use and I like python backends."
+          comment: "Super simple to use and I like Python backends."
         }
       ],
     },
@@ -99,17 +91,17 @@ export default function FavouriteTech() {
       tech: [
         {
           name: "haskell",
-          state: useState(false),
           comment: "My first real introduction to functional programming that led me to often use functional features in other languages. Even though I'll probably never use it I still have to respect the OG. "
         },
         {
           name: "rails",
-          state: useState(false),
           comment: "This one is interesting. I can see how it's useful for creating CRUD endpoints extremely fast with a single command, but it feels so different from other languages that I'm still on the edge."
         }
       ]
     }
   ]
+
+  const [activeHover, setActiveHover] = useState("");
 
   const gridComponents = gridItems.map((item) => {
     return (
@@ -120,15 +112,16 @@ export default function FavouriteTech() {
             return (
               <FadeInWhenVisible key={tech.name} hover>
                 <div className={styles.techItemWrapper}>
-                  { tech.state[0] && (
+                  { activeHover === tech.name && (
                     <div className={styles.comment}>
                       {tech.comment}
                     </div>
                   )}
-                  <div className={styles.techItem} onMouseEnter={() => tech.state[1](true)} onMouseLeave={() => tech.state[1](false)}>
+                  <div className={styles.techItem} onMouseEnter={() => setActiveHover(tech.name)} onMouseLeave={() => setActiveHover("")}>
                     <div className={styles.imageWrapper}>
                       <img
                         src={`/images/tech/${tech.name}.png`}
+                        alt={tech.name}
                       />
                     </div>
                     <div className={globalStyles.annotationStyle}>{tech.name}</div>

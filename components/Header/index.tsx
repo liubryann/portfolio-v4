@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Hamburger from '../Hamburger';
 import { useState } from 'react';
 
+/** Header navigation or hamburger in mobile */
 export default function Header({ open, setOpen }) {
   const links = [
     'blog',
