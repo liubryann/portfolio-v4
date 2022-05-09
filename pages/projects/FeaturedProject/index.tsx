@@ -2,6 +2,7 @@ import Image from 'next/image';
 import styles from './featuredproject.module.scss';
 import useWindowSize from '../../../lib/hooks/window-size';
 import FadeInWhenVisible from '../../../lib/components/fade-in-visible';
+import project from '../../../public/images/ddd.png';
 
 export default function FeaturedProject() {
   const isMobile = useWindowSize();
@@ -18,6 +19,7 @@ export default function FeaturedProject() {
               width={598}
               height={200}
               alt="current stock info"
+              priority
             />
           </FadeInWhenVisible>
           <div className={styles.verticalSpace} />
@@ -27,6 +29,7 @@ export default function FeaturedProject() {
               width={598}
               height={400}
               alt="historic price chart"
+              priority
             />
           </FadeInWhenVisible>
           <div className={styles.verticalSpace} />
@@ -54,9 +57,10 @@ export default function FeaturedProject() {
         <FadeInWhenVisible>
           <div className={`${styles.wrapper} `}>
             <div className={`${styles.imageWrapper} `}>
-              <img
-                src="/images/ddd.png"
+              <Image
+                src={project}
                 alt="Due Dilligence for Dummies"
+                priority
               />
             </div>
           </div>
