@@ -25,7 +25,7 @@ export default function Header({ open, setOpen }) {
             onMouseEnter={() => setLogo("/images/apollo_happy_dark.png")} 
             onMouseLeave={() => setLogo("/images/apollo_mad_dark.png")}
           >
-            <img src={logo} className={styles.apollo}/>
+            <img src={logo} className={styles.apollo} alt="apollo" />
           </a>
         </Link>
       </div>
