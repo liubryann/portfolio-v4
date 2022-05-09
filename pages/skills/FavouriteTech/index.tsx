@@ -5,7 +5,7 @@ import Image from 'next/image';
 import FadeInWhenVisible from '../../../lib/components/fade-in-visible';
 import useWindowSize from '../../../lib/hooks/window-size';
 import { BsFillInfoCircleFill } from 'react-icons/bs';
-
+import images from '../../../public/images/tech/index';
 
 export default function FavouriteTech() {
   const gridItems = [
@@ -120,7 +120,7 @@ export default function FavouriteTech() {
                   <div className={styles.techItem} onMouseEnter={() => setActiveHover(tech.name)} onMouseLeave={() => setActiveHover("")}>
                     <div className={styles.imageWrapper}>
                       <img
-                        src={`/images/tech/${tech.name}.png`}
+                        src={images[tech.name].src}
                         alt={tech.name}
                       />
                     </div>
