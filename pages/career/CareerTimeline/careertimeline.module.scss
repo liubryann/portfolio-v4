@@ -17,6 +17,10 @@
     min-width: 80px;
     flex-grow: 1;
 
+    .name {
+      z-index: -1;
+    }
+
     .lineWrapper {
       display: flex;
       width: 100%;
@@ -104,11 +108,27 @@
   margin-top: 50px;
 }
 
+@media (max-width: 1050px) {
+  .circle {
+    width: 20px;
+    height: 20px;
+  }
+
+  .company {
+    font-size: 12px;
+  }
+
+  .date {
+    font-size: 12px;
+  }
+}
+
 @media (max-width: 748px) {
   .timeline {
     flex-direction: column;
-    height: 80vh;
+    height: 95vh;
     padding-bottom: 50px;
+    
 
     .company {
       width: 80px;

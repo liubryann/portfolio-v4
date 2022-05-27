@@ -8,7 +8,12 @@ import useWindowSize from '../../lib/hooks/window-size';
 
 const siteTitle = 'Bryan Liu';
 
-export default function Container({ children }) {
+interface ContainerProps {
+  center?: boolean,
+  children?: React.ReactNode
+}
+
+export default function Container({ center, children }: ContainerProps) {
   const [open, setOpen] = useState(false);
   const isMobile = useWindowSize();
 
@@ -17,7 +22,7 @@ export default function Container({ children }) {
       <Head>
         <meta
           name="description"
-          content="Bryan Liu's personal portfolio website"
+          content="Hi I'm Bryan, welcome to my personal website. I'm currently a 4th year student at UofT interning at Amazon as a Softare Development Engineer."
         />
         <meta name="og:title" content={siteTitle} />
         <title>{siteTitle}</title>
@@ -25,7 +30,7 @@ export default function Container({ children }) {
       </Head>
       <Header open={open} setOpen={setOpen} />
       <AnimatePresence>
-        <main className={styles.main} key="main">{children}</main> 
+        <main className={`${styles.main} ${center ? styles.center : ''}`} key="main">{children}</main> 
         { open && isMobile && (
           <motion.div
             initial={{ opacity: 0, zIndex:0 }}

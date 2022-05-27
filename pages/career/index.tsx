@@ -5,12 +5,14 @@ import CareerTimeline from './CareerTimeline';
 
 export default function Career() {
   return (
-    <Container>
-      <PageHeader 
-        pageTitle="Career History"  
-        title="CAREER HISTORY"
-        subtitleOne="upcoming SDE intern @amazon"
-      />
+    <Container center>
+      <div style={{ "marginRight": "auto"}}>
+        <PageHeader 
+          pageTitle="Career History"  
+          title="CAREER HISTORY"
+          subtitleOne="SDE intern @amazon"
+        />
+      </div>
       <CareerTimeline />
       <Footer 
         middleLink="contact"

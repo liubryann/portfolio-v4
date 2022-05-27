@@ -15,28 +15,40 @@ export default function CareerTimeline() {
       first: true
     },
     {
-      company: "lakeridge health",
+      company: "lakeridge",
       title: "IT Technichian High School Intern",
       date: "2018",
-      comment: "Provided IT help desk support across 5 Durham Region hospitals as well as performing hardware and network deployments.",
+      comment: "Provided IT help desk support across 5 Durham Region hospitals.",
     },
     {
       company: "uoft",
       title: "IT Help Desk Part-time",
-      comment: "Provided general in-person IT support as well as maintaining labs.",
+      comment: "Provided IT help desk support.",
       date: "2019",
     },
     {
       company: "opentext",
       title: "Full Stack Software Developer Intern",
-      comment: "Worked on the admin client for OpentText Media Management, creating a wysiwyg editor for clients to fully customize and preview email notifications.",
+      comment: "Worked on the admin client for OpentText Media Management.",
       date: "2020",
     },
     {
       company: "verto",
       title: "Full Stack Software Developer Intern",
-      comment: "Rapidly developing new features for the vaccine scheduling and lab testing solutions.",
+      comment: "Developing new features for vaccine scheduling and lab testing solutions.",
       date: "2021",
+    },
+    {
+      company: "shopify",
+      title: "Frontend Developer Intern",
+      comment: "Developed new features for Flow,  an ecommerce automation platform.",
+      date: "2022",
+    },
+    {
+      company: "amazon",
+      title: "Software Development Engineer Intern",
+      comment: "Streamlined onboarding of new shipping carriers for fulfilment team.",
+      date: "2022",
     }
   ]
 
@@ -46,7 +58,7 @@ export default function CareerTimeline() {
   const careerInfoComponent = careerInfo.map((career, index) => {
     return (
       <div className={styles.career} key={career.company}>
-        <div className={`${globalStyles.annotationStyle} ${styles.company}`}>{career.company}</div>
+        <div className={`${globalStyles.annotationStyle} ${styles.company} ${styles.name}`}>{career.company}</div>
         <div className={styles.lineWrapper}>
           { !career?.first ? (
             <div className={styles.line} />
