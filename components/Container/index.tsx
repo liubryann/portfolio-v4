@@ -22,7 +22,7 @@ export default function Container({ center, children }: ContainerProps) {
       <Head>
         <meta
           name="description"
-          content="Hi I'm Bryan, welcome to my personal website. I'm currently a 4th year student at UofT interning at Amazon as a Softare Development Engineer."
+          content="Hi I'm Bryan, welcome to my personal website. I'm currently a 4th year student at UofT interning at Amazon as a Software Development Engineer."
         />
         <meta name="og:title" content={siteTitle} />
         <title>{siteTitle}</title>
