@@ -10,7 +10,7 @@ export default function Career() {
         <PageHeader 
           pageTitle="Career History"  
           title="CAREER HISTORY"
-          subtitleOne="SDE intern @amazon"
+          subtitleOne="SDE @amazon"
         />
       </div>
       <CareerTimeline />

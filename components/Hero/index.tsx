@@ -18,7 +18,7 @@ export default function Hero() {
           </h1>
           </div>
           <div className="animate__animated animate__fadeInLeft">
-            <h3 className={`${globalStyles.subtitleStyle} `}>4th year SWE @uoft</h3>
+            <h3 className={`${globalStyles.subtitleStyle} `}>SDE @amazon</h3>
           </div>
           <div className={`animate__animated animate__fadeInLeft animate__delay-1s ${globalStyles.delay}`}>
             <h3 className={`${globalStyles.subtitleStyle} ${styles.secondSubtitle}`}>and front-end enthusiast</h3>
