@@ -12,7 +12,7 @@ const cors = initMiddleware(
 )
 
 export interface PostComment {
-  title: string,
+  title: string | string[],
   date: Date, 
   comments: Comment[]
 }
